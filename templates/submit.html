@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Output</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Background and general styles */
+        body {
+            background-image: url("http://i0.wp.com/www.dairyproducts.it/eng/wp-content/uploads/2016/05/Latte.jpg?fit=1200%2C842");
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        /* Styling for headings */
+        h1,
+        h3 {
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 3rem;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Button styles */
+        .btn-lg {
+            margin: 5px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-lg:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        /* Animations for fadeIn */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bg-light text-right">
+                <a href="/" class="btn btn-info btn-lg animate__animated animate__fadeIn">Home</a>
+                <a href="/predict" class="btn btn-primary btn-lg animate__animated animate__fadeIn" data-aos="fade-left">Predict</a>
+            </div>
+        </div>
+        <br>
+
+        <!-- Title and Prediction Result -->
+        <h1 data-aos="fade-in"><strong>Milk Grading System</strong></h1><br>
+        <h3 data-aos="fade-up">The predicted grade for the milk is <strong>{{ prediction_text }}</strong></h3>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        AOS.init(); // Initialize AOS for scroll animations
+    </script>
+</body>
+
+</html>
