@@ -7,3 +7,5 @@ opendatasets
 scikit-learn
 imblearn
 gunicorn
+Flask
+mysql-connector-python
