@@ -120,74 +120,87 @@
 
 <body>
     <br>
-    <div class="container">
-
-        <!-- Navbar -->
-        <div class="row">
-            <div class="col-md-12 bg-light text-right animate__animated animate__fadeIn">
-                <a href="/" class="btn btn-info btn-lg">Home</a>
-                <a href="/predict" class="btn btn-primary disabled btn-lg">Predict</a>
+    <!-- Form -->
+<div class="form-container" data-aos="fade-up">
+    <h4>Milk Grading Prediction Form</h4>
+    
+    <form action="/pred" method="POST">
+        <!-- pH -->
+        <div class="form-group row">
+            <div class="col-md-3" data-aos="fade-right">
+                <label for="pH">pH</label>
+                <input type="number" class="form-control" name="pH" min="3" max="10" step="0.01" id="pH" placeholder="pH" required />
             </div>
         </div>
 
-        <!-- Title -->
-        <br>
-        <h1 class="animate__animated animate__zoomIn"><strong>Milk Grading System</strong></h1><br>
-
-        <!-- Form -->
-        <div class="form-container" data-aos="fade-up">
-            <h4>
-                <form action="/pred" method="POST">
-                    <div class="form-group row">
-                        <div class="col-md-3" data-aos="fade-right">
-                            <label for="pH">pH</label>
-                            <input type="number" class="form-control" name="pH" min="3" max="10" step="0.01" id="pH" placeholder="pH" required="required" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-3" data-aos="fade-right" data-aos-delay="100">
-                            <label for="Temperature">Temperature</label>
-                            <input type="number" class="form-control" name="Temperature" id="Temperature" placeholder="Temperature" required="required" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-3" data-aos="fade-right" data-aos-delay="200">
-                            <label for="Taste">Taste</label>
-                            <input type="number" class="form-control" name="Taste" id="Taste" placeholder="Taste" required="required" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-3" data-aos="fade-right" data-aos-delay="300">
-                            <label for="Odor">Odor</label>
-                            <input type="number" class="form-control" name="Odor" id="Odor" placeholder="Odor" required="required" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-3" data-aos="fade-right" data-aos-delay="400">
-                            <label for="Fat">Fat</label>
-                            <input type="number" class="form-control" name="Fat" id="Fat" placeholder="Fat" required="required" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-3" data-aos="fade-right" data-aos-delay="500">
-                            <label for="Turbidity">Turbidity</label>
-                            <input type="number" class="form-control" name="Turbidity" id="Turbidity" placeholder="Turbidity" required="required" />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-3" data-aos="fade-right" data-aos-delay="600">
-                            <label for="Colour">Colour</label>
-                            <input type="number" class="form-control" name="Colour" id="Colour" placeholder="Colour" required="required" />
-                        </div>
-                     
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success btn-lg animate__animated animate__bounceIn">Submit</button>
-                </form>
-            </h4>
+        <!-- Temperature -->
+        <div class="form-group row">
+            <div class="col-md-3" data-aos="fade-right" data-aos-delay="100">
+                <label for="Temperature">Temperature</label>
+                <input type="number" class="form-control" name="Temperature" id="Temperature" placeholder="Temperature" required />
+            </div>
         </div>
-        <br>
-    </div>
+
+        <!-- Taste -->
+        <div class="form-group row">
+            <div class="col-md-3" data-aos="fade-right" data-aos-delay="200">
+                <label for="Taste">Taste</label>
+                <select class="form-control" name="Taste" id="Taste" required>
+                    <option value="1">1 (If Present)</option>
+                    <option value="0">0 (If Not Present)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Odor -->
+        <div class="form-group row">
+            <div class="col-md-3" data-aos="fade-right" data-aos-delay="300">
+                <label for="Odor">Odor</label>
+                <select class="form-control" name="Odor" id="Odor" required>
+                    <option value="1">1 (If Present)</option>
+                    <option value="0">0 (If Not Present)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Fat -->
+        <div class="form-group row">
+            <div class="col-md-3" data-aos="fade-right" data-aos-delay="400">
+                <label for="Fat">Fat</label>
+                <select class="form-control" name="Fat" id="Fat" required>
+                    <option value="1">1 (If Present)</option>
+                    <option value="0">0 (If Not Present)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Turbidity -->
+        <div class="form-group row">
+            <div class="col-md-3" data-aos="fade-right" data-aos-delay="500">
+                <label for="Turbidity">Turbidity</label>
+                <select class="form-control" name="Turbidity" id="Turbidity" required>
+                    <option value="1">1 (If Present)</option>
+                    <option value="0">0 (If Not Present)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Colour -->
+        <div class="form-group row">
+            <div class="col-md-3" data-aos="fade-right" data-aos-delay="600">
+                <label for="Colour">Colour</label>
+                <input type="number" class="form-control" name="Colour" id="Colour" placeholder="Colour" required />
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-success btn-lg animate__animated animate__bounceIn">Submit</button>
+    </form>
+</div>
+<br>
+
+<br>
+
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
