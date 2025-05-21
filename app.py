@@ -10,14 +10,16 @@ app = Flask(__name__)
 model_path = os.path.join(os.path.dirname(__file__), "milkgrade1.pkl")
 model = pickle.load(open(model_path, "rb"))
 
-# MySQL connection
+# MySQL connection using environment variables (suitable for Render/Cloud)
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="@n@nthA1",  # Your MySQL password
-    database="milk_grading"
+    host=os.environ.get("DB_HOST"),
+    user=os.environ.get("DB_USER"),
+    password=os.environ.get("DB_PASSWORD"),
+    database=os.environ.get("DB_NAME"),
+    ssl_ca=os.environ.get("DB_SSL_CA")  # Only needed for PlanetScale or secure remote DBs
 )
 cursor = db.cursor()
+
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -56,5 +58,4 @@ def predict():
         return f"Something went wrong: {e}"
 
 if __name__ == "__main__":
-    app.run(debug=True,port=7000)
-
+    app.run(debug=True, port=7000)
