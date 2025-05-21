@@ -14,61 +14,81 @@
             background-attachment: fixed;
             font-family: 'Arial', sans-serif;
             color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
         }
 
         /* Styling for headings */
-        h1,
-        h3 {
-            text-align: center;
-            color: #fff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-
         h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
             animation: fadeInDown 1s ease-in-out;
         }
 
         h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             line-height: 1.8;
             animation: fadeInUp 1.5s ease-in-out;
+            background-color:rgba(0, 0, 0, 0.3);
+            
+        }
+
+        /* Prediction result text color */
+        .good {
+            color:green;
+           
+        }
+
+        .average {
+            color:orange;
+           
+        }
+
+        .bad {
+            color: red;
+          
         }
 
         /* Button styles */
-        .btn-lg {
-            margin: 5px;
-            border-radius: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .btn-custom {
+            font-size: 1.5rem;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease-in-out;
         }
 
-        .btn-lg:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        .btn-home {
+            background: linear-gradient(135deg, #17a2b8, #138496);
+            color: white;
         }
 
-        .btn-info {
-            background-color: #17a2b8;
-            border-color: #17a2b8;
+        .btn-home:hover {
+            background: linear-gradient(135deg, #138496, #117a8b);
+            box-shadow: 0 4px 15px rgba(23, 162, 184, 0.5);
+            transform: scale(1.05);
         }
 
-        .btn-info:hover {
-            background-color: #138496;
-            border-color: #117a8b;
+        .btn-submit {
+            background: linear-gradient(135deg, #28a745, #218838);
+            color: white;
         }
 
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #218838, #1e7e34);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.5);
+            transform: scale(1.05);
         }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
-        }
-
-        /* Animations for fadeIn */
+        /* Animations */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -108,20 +128,14 @@
 
 <body>
 
-    <!-- Navbar -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 bg-light text-right">
-                <a href="/" class="btn btn-info btn-lg animate__animated animate__fadeIn">Home</a>
-                <a href="/predict" class="btn btn-primary btn-lg animate__animated animate__fadeIn" data-aos="fade-left">Predict</a>
-            </div>
-        </div>
-        <br>
+    <h1 data-aos="fade-in"><strong>Milk Grading System</strong></h1>
+    <h3 data-aos="fade-up"><strong>The predicted grade for the milk is</strong>
+        <strong id="prediction">{{ prediction_text }}</strong>
+    </h3>
 
-        <!-- Title and Prediction Result -->
-        <h1 data-aos="fade-in"><strong>Milk Grading System</strong></h1><br>
-        <h3 data-aos="fade-up">The predicted grade for the milk is <strong>{{ prediction_text }}</strong></h3>
-    </div>
+    <br>
+    <a href="/" class="btn btn-custom btn-home">Home</a>
+    <a href="/predict" class="btn btn-custom btn-submit">Submit Again</a>
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -130,7 +144,22 @@
 
     <script>
         AOS.init(); // Initialize AOS for scroll animations
+
+        // Change text color based on prediction
+        document.addEventListener("DOMContentLoaded", function () {
+            let predictionText = document.getElementById("prediction").innerText.toLowerCase();
+            let predictionElement = document.getElementById("prediction");
+
+            if (predictionText.includes("good")) {
+                predictionElement.classList.add("good");
+            } else if (predictionText.includes("average")) {
+                predictionElement.classList.add("average");
+            } else if (predictionText.includes("bad")) {
+                predictionElement.classList.add("bad");
+            }
+        });
     </script>
+
 </body>
 
 </html>
